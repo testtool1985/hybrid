@@ -7,8 +7,33 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <form (ngSubmit)="AddPost()">
+        <ion-item>
+          <ion-label>ID:</ion-label>
+          <ion-input type="text" [(ngModel)]="post.id" name="id"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Title:</ion-label>
+          <ion-input type="text" [(ngModel)]="post.title" name="title"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Body:</ion-label>
+            <ion-input type="text" [(ngModel)]="post.body" name="body"></ion-input>
+          </ion-item>
+        <button ion-button type="submit" block>Add Post</button>
+      </form>
+
+  <ion-list>
+
+    <ion-item *ngFor="let post of posts" >
+      <h3>{{post.id}}</h3>
+      <h6>{{post.title}}</h6>
+      <p>{{post.body}}</p>
+    </ion-item>
+    
+  </ion-list>
+
+  <button ion-button medium (click)='fetchData(0,10)'>1</button>
+  <button ion-button medium (click)='fetchData(10,10)'>2</button>
+  <button ion-button medium (click)='fetchData(20,10)'>3</button>
 </ion-content>
